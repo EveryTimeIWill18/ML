@@ -1,7 +1,6 @@
 import os
 import abc
-from abc import ABCMeta, abstractmethod
-import numpy as np
+from abc import abstractmethod
 import pandas as pd
 
 # --- setup abstract interfaces
@@ -23,8 +22,6 @@ class DataStruct(object):
     _Features = dict()
 
 
-
-
 class HBCDataPreprocessing(AbsDataPreprocessing):
     """concrete implementation of AbsDataPreprocessing"""
 
@@ -35,8 +32,8 @@ class HBCDataPreprocessing(AbsDataPreprocessing):
 
     def __repr__(self):
         """machine readable print"""
-        return 'Class:[{}]\nPath:[{}]\nFile: [{}]'.format(self.__class__.__name__,
-                                               self._f_path, self._file)
+        return '[{}]\n[{}]\nFile:[{}]'.format(self.__class__.__name__,
+                                              self._f_path, self._file)
 
     def preprocess(self):
         """process data"""
@@ -57,8 +54,8 @@ class HBCDataPreprocessing(AbsDataPreprocessing):
                         for j, _ in enumerate(current_feature):
                             if j == i:
                                 DataStruct._DataSet\
-                                          .get(list(DataStruct._DataSet\
-                                                            .keys())[i])\
+                                          .get(list(DataStruct._DataSet
+                                                    .keys())[i])\
                                           .append(current_feature[j])
                 DataStruct._DataSet = pd.DataFrame(DataStruct._DataSet)
             else:
